@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Website Editor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1 contenteditable="true" class="editable-text" data-field="logo">Your Store</h1>
+            </div>
+            <div class="nav-controls">
+                <button id="editModeBtn" class="btn btn-primary">🖊️ Edit Mode</button>
+                <button id="saveSiteBtn" class="btn btn-success" style="display:none;">💾 Save</button>
+                <button id="exportBtn" class="btn btn-info">📥 Export</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero editable-section" draggable="true" data-section="hero">
+        <div class="hero-content">
+            <h2 contenteditable="true" class="editable-text" data-field="hero-title">Welcome to Your Store</h2>
+            <p contenteditable="true" class="editable-text" data-field="hero-subtitle">Amazing Products Await You</p>
+            <button class="btn btn-cta">Shop Now</button>
+        </div>
+        <div class="section-controls" style="display:none;">
+            <button class="delete-section">🗑️ Delete</button>
+            <button class="duplicate-section">📋 Duplicate</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section editable-section" draggable="true" data-section="products">
+        <div class="section-header">
+            <h2 contenteditable="true" class="editable-text" data-field="products-title">Featured Products</h2>
+            <p contenteditable="true" class="editable-text" data-field="products-subtitle">Choose from our collection</p>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <div class="product-card" draggable="true">
+                <div class="product-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                <h3 contenteditable="true" class="editable-text">Product 1</h3>
+                <p contenteditable="true" class="editable-text">Description</p>
+                <div class="product-price">
+                    <span contenteditable="true" class="editable-text">$99</span>
+                </div>
+                <button class="btn btn-order whatsapp-btn">Order on WhatsApp</button>
+                <div class="product-controls" style="display:none;">
+                    <button class="delete-product">🗑️</button>
+                </div>
+            </div>
+
+            <div class="product-card" draggable="true">
+                <div class="product-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                <h3 contenteditable="true" class="editable-text">Product 2</h3>
+                <p contenteditable="true" class="editable-text">Description</p>
+                <div class="product-price">
+                    <span contenteditable="true" class="editable-text">$129</span>
+                </div>
+                <button class="btn btn-order whatsapp-btn">Order on WhatsApp</button>
+                <div class="product-controls" style="display:none;">
+                    <button class="delete-product">🗑️</button>
+                </div>
+            </div>
+
+            <div class="product-card" draggable="true">
+                <div class="product-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+                <h3 contenteditable="true" class="editable-text">Product 3</h3>
+                <p contenteditable="true" class="editable-text">Description</p>
+                <div class="product-price">
+                    <span contenteditable="true" class="editable-text">$79</span>
+                </div>
+                <button class="btn btn-order whatsapp-btn">Order on WhatsApp</button>
+                <div class="product-controls" style="display:none;">
+                    <button class="delete-product">🗑️</button>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-add" id="addProductBtn">+ Add Product</button>
+        <div class="section-controls" style="display:none;">
+            <button class="delete-section">🗑️ Delete</button>
+            <button class="duplicate-section">📋 Duplicate</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section editable-section" draggable="true" data-section="contact">
+        <div class="section-header">
+            <h2 contenteditable="true" class="editable-text" data-field="contact-title">Get in Touch</h2>
+            <p contenteditable="true" class="editable-text" data-field="contact-subtitle">We'd love to hear from you</p>
+        </div>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <label>WhatsApp Number:</label>
+                <input type="text" id="whatsappNumber" placeholder="+1234567890" value="">
+            </div>
+            <div class="contact-item">
+                <label>Store Email:</label>
+                <input type="text" id="storeEmail" placeholder="your@email.com" value="">
+            </div>
+            <div class="contact-item">
+                <label>Store Phone:</label>
+                <input type="text" id="storePhone" placeholder="+1234567890" value="">
+            </div>
+        </div>
+
+        <div class="section-controls" style="display:none;">
+            <button class="delete-section">🗑️ Delete</button>
+            <button class="duplicate-section">📋 Duplicate</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p contenteditable="true" class="editable-text" data-field="footer-text">&copy; 2024 Your Store. All rights reserved.</p>
+    </footer>
+
+    <!-- Editor Sidebar -->
+    <div id="editorSidebar" class="editor-sidebar" style="display:none;">
+        <div class="sidebar-header">
+            <h3>Edit Settings</h3>
+            <button id="closeSidebar" class="close-btn">✕</button>
+        </div>
+        
+        <div class="sidebar-section">
+            <h4>Theme Colors</h4>
+            <div class="color-picker">
+                <label>Primary Color:</label>
+                <input type="color" id="primaryColor" value="#667eea">
+                <label>Secondary Color:</label>
+                <input type="color" id="secondaryColor" value="#764ba2">
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <h4>Store Settings</h4>
+            <label>Store Name:</label>
+            <input type="text" id="storeName" placeholder="Enter store name">
+            <label>WhatsApp Number:</label>
+            <input type="text" id="sidebarWhatsapp" placeholder="+1234567890">
+        </div>
+
+        <div class="sidebar-section">
+            <h4>Tips</h4>
+            <ul class="tips-list">
+                <li>Click on any text to edit it</li>
+                <li>Drag sections to reorder them</li>
+                <li>Click "Add Product" to add new products</li>
+                <li>Products have individual delete buttons in edit mode</li>
+                <li>Save your changes to localStorage</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
